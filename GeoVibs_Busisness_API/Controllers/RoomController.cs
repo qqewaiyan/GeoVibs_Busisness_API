@@ -36,7 +36,6 @@ namespace GeoVibs_Busisness_API.Controllers
             return Ok(room);
         }
 
-        
         [HttpPost]
         public async Task<IActionResult> SaveAsync([FromBody] Room room)
         {

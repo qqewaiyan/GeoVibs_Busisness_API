@@ -36,12 +36,18 @@ namespace GeoVibs_Busisness_API.Service.Movie
                 .FirstOrDefaultAsync(x => x.Id == param.Id && x.VenueId == param.VenueId);
         }
 
+        public async Task<Movie?> GetByIdWithNoTrackingAsync(IdParam param)
+        {
+            return await _db.Movies.AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == param.Id && x.VenueId == param.VenueId);
+        }
+
         public async Task<bool> SaveAsync(Movie movie)
         {
             try
             {
                 var param = new IdParam { Id = movie.Id, VenueId = movie.VenueId };
-                var existingMovie = await GetByIdAsync(param);
+                var existingMovie = await GetByIdWithNoTrackingAsync(param);
 
                 if (existingMovie != null)
                     _db.Movies.Update(movie);
@@ -54,6 +60,7 @@ namespace GeoVibs_Busisness_API.Service.Movie
             catch
             {
                 return false;
+                throw;
             }
         }
     }

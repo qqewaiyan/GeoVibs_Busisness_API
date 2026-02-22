@@ -71,8 +71,6 @@ namespace GeoVibs_Busisness_API.Service.Auth
                 var userLevel = new UserLevel
                 {
                     Name = "Administor",
-                    CanManageRoom = true,
-                    CanManageSession = true,
                     VenueId = venue.Id,
                 };
 

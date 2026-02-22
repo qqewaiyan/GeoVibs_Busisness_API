@@ -23,13 +23,6 @@ namespace GeoVibs_Busisness_API.DataAccess
                 .HasMaxLength(100)
                 .IsRequired();
             e.Property(x => x.VenueId).HasColumnName("venue_id");
-            e.Property(x => x.CanManageRoom)
-                .HasColumnName("can_manage_room")
-                .IsRequired();
-
-            e.Property(x => x.CanManageSession)
-                .HasColumnName("can_manage_session")
-                .IsRequired();
 
             e.HasIndex(x => x.Name);
         }

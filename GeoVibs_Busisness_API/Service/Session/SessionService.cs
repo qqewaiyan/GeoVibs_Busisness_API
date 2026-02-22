@@ -51,6 +51,12 @@
             return existingSession;
         }
 
+        public async Task<Session?> GetByIdWithNoTrackingAsync(IdParam param)
+        {
+            return await _db.Sessions.AsNoTracking().FirstOrDefaultAsync(r => r.Id == param.Id && r.VenueId == param.VenueId);
+
+        }
+
         public async Task<SessionPreviewResponse> PreviewAsync(SessionPreviewRequest req)
         {
             var room = await _db.Rooms

@@ -22,7 +22,7 @@
 
         public async Task<Venue?> GetByIdAsync(int id)
         {
-            return await _db.Venues.FindAsync(id);
+            return await _db.Venues.FirstOrDefaultAsync(X => X.Id == id);
         }
 
         public async Task<bool> SaveAsync(Venue venue)
@@ -61,6 +61,11 @@
                 return existingVenue;
             }
             return null;
+        }
+
+        public async Task<Venue?> GetByIdWithNoTrackingAsync(int id)
+        {
+            return await _db.Venues.AsNoTracking().FirstOrDefaultAsync(X => X.Id == id);
         }
     }
 

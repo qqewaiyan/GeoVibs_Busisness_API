@@ -5,6 +5,7 @@
     {
         Task<List<Movie>> GetAllAsync(VenueParam param);
         Task<Movie?> GetByIdAsync(IdParam param);
+        Task<Movie?> GetByIdWithNoTrackingAsync(IdParam param);
         Task<bool> SaveAsync(Movie room);
         Task<bool> DeleteAsync(IdParam param);
     }

@@ -5,6 +5,7 @@
     {
         Task<List<Room>> GetAllAsync(VenueParam param);
         Task<Room?> GetByIdAsync(IdParam param);
+        Task<Room?> GetByIdWithNoTrackingAsync(IdParam param);
         Task<bool> SaveAsync(Room room);
         Task<bool> DeleteAsync(IdParam param);
     }

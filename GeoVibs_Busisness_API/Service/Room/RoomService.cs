@@ -36,6 +36,12 @@ namespace GeoVibs_Busisness_API.Service.Room
                 .FirstOrDefaultAsync(x => x.Id == param.Id && x.VenueId == param.VenueId);
         }
 
+        public async Task<Room?> GetByIdWithNoTrackingAsync(IdParam param)
+        {
+            var existingRoom = await _db.Rooms.AsNoTracking().FirstOrDefaultAsync(r => r.Id == param.Id && r.VenueId == param.VenueId);
+            return existingRoom;
+        }
+
         public async Task<bool> SaveAsync(Room room)
         {
             try

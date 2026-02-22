@@ -38,6 +38,12 @@
             return existingItem;
         }
 
+        public async Task<Item?> GetByIdWithNoTrackingAsync(IdParam param)
+        {
+            var existingItem = await _db.Items.AsNoTracking().FirstOrDefaultAsync(r => r.Id == param.Id && r.VenueId == param.VenueId);
+            return existingItem;
+        }
+
         public async Task<bool> SaveAsync(Item movie)
         {
             try

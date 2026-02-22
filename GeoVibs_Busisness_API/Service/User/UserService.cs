@@ -37,6 +37,12 @@
             return existingUser;
         }
 
+        public async Task<User?> GetByIdWithNoTrackingAsync(IdParam param)
+        {
+            var existingUser = await _db.Users.AsNoTracking().FirstOrDefaultAsync(r => r.Id == param.Id && r.VenueId == param.VenueId);
+            return existingUser;
+        }
+
         public async Task<bool> SaveAsync(User user)
         {
             try
