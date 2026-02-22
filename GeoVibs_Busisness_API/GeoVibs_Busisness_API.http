@@ -1,0 +1,6 @@
+@GeoVibs_Busisness_API_HostAddress = https://localhost:5201
+
+GET {{GeoVibs_Busisness_API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
