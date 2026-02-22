@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DataEntity/DataEntity.csproj" />
+  <Project Path="GeoVibs_Busisness_API/GeoVibs_Busisness_API.csproj" />
+</Solution>
