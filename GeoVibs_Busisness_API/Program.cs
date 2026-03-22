@@ -23,15 +23,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
-//builder.WebHost.ConfigureKestrel(options =>
-//{
-//    options.ListenLocalhost(5201, listenOptions =>
-//    {
-//        listenOptions.UseHttps(); 
-//    });
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenLocalhost(5201, listenOptions =>
+    {
+        listenOptions.UseHttps(); 
+    });
 
-//    options.ListenLocalhost(5200);
-//});
+    options.ListenLocalhost(5200);
+});
 
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<VenueDbContext>(options =>
@@ -42,11 +42,12 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("https://localhost:7008")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
+
 
 
 builder.Services.AddScoped<JwtTokenGenerator>();

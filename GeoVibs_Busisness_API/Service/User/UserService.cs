@@ -48,7 +48,7 @@
             try
             {
                 var param = new IdParam { Id = user.Id, VenueId = user.VenueId };
-                var existingUser = await GetByIdAsync(param);
+                var existingUser = await GetByIdWithNoTrackingAsync(param);
                 if (existingUser is not null)
                 {
                     _db.Users.Update(user);

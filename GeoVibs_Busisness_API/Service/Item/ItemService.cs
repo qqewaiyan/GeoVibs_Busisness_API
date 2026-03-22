@@ -49,7 +49,7 @@
             try
             {
                 var param = new IdParam() {  Id = movie.Id, VenueId = movie.VenueId };
-                var existingItem = await GetByIdAsync(param);
+                var existingItem = await GetByIdWithNoTrackingAsync(param);
                 if (existingItem is not null)
                 {
                     _db.Items.Update(movie);

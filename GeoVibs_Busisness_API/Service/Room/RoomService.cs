@@ -47,7 +47,7 @@ namespace GeoVibs_Busisness_API.Service.Room
             try
             {
                 var param = new IdParam { Id = room.Id, VenueId = room.VenueId };
-                var existingRoom = await GetByIdAsync(param);
+                var existingRoom = await GetByIdWithNoTrackingAsync(param);
 
                 if (existingRoom != null)
                     _db.Rooms.Update(room);
